@@ -41,6 +41,10 @@ class MarbotResource extends Resource
     {
         return static::getModel()::count();
     }
+    public static function getNavigationBadgeTooltip(): ?string
+    {
+        return 'Total Marbot';
+    }
     public static function getNavigationBadgeColor(): ?string
     {
         return 'warning';

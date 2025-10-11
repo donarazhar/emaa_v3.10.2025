@@ -30,6 +30,10 @@ class KursusMuridResource extends Resource
     {
         return static::getModel()::count();
     }
+    public static function getNavigationBadgeTooltip(): ?string
+    {
+        return 'Jumlah Murid';
+    }
 
     public static function getNavigationBadgeColor(): ?string
     {

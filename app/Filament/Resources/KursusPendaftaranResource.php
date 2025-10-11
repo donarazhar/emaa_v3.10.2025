@@ -35,6 +35,10 @@ class KursusPendaftaranResource extends Resource
     {
         return static::getModel()::count();
     }
+    public static function getNavigationBadgeTooltip(): ?string
+    {
+        return 'Total Transaksi';
+    }
 
     public static function getNavigationBadgeColor(): ?string
     {

@@ -30,6 +30,10 @@ class KursusGuruResource extends Resource
     {
         return static::getModel()::count();
     }
+    public static function getNavigationBadgeTooltip(): ?string
+    {
+        return 'Jumlah Guru';
+    }
 
     public static function getNavigationBadgeColor(): ?string
     {

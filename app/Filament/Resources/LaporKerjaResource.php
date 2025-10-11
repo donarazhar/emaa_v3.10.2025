@@ -31,6 +31,10 @@ class LaporKerjaResource extends Resource
     {
         return static::getModel()::count();
     }
+    public static function getNavigationBadgeTooltip(): ?string
+    {
+        return 'Total Lapor Kerja';
+    }
 
     public static function getNavigationBadgeColor(): ?string
     {
@@ -64,11 +68,11 @@ class LaporKerjaResource extends Resource
                 Tables\Columns\ImageColumn::make('foto_laporkerja')->label('Foto')
                     ->stacked()->size(60)->circular()->limit(3)->limitedRemainingText(),
                 Tables\Columns\TextColumn::make('user.name')->label('Detail Pelapor')
-                ->description(fn (LaporKerja $record): string => (new \DateTime($record->tgl))->format('d/m/Y'), position: 'above')
-                ->description(fn (LaporKerja $record): string => $record->email_user)
-                ->sortable()->searchable(),
+                    ->description(fn(LaporKerja $record): string => (new \DateTime($record->tgl))->format('d/m/Y'), position: 'above')
+                    ->description(fn(LaporKerja $record): string => $record->email_user)
+                    ->sortable()->searchable(),
                 Tables\Columns\TextColumn::make('judul')->label('Detail Laporan')->sortable()->searchable()
-                    ->description(fn (LaporKerja $record): string => $record->isi),
+                    ->description(fn(LaporKerja $record): string => $record->isi),
             ])
             ->filters([
                 DateRangeFilter::make('tgl')->label('Filter by Range Tanggal'),

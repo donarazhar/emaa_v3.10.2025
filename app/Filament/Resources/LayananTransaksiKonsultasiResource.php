@@ -36,6 +36,10 @@ class LayananTransaksiKonsultasiResource extends Resource
     {
         return static::getModel()::count();
     }
+    public static function getNavigationBadgeTooltip(): ?string
+    {
+        return 'Total Konsultasi';
+    }
 
     public static function getNavigationBadgeColor(): ?string
     {

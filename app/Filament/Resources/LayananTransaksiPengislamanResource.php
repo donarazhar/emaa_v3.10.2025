@@ -37,6 +37,10 @@ class LayananTransaksiPengislamanResource extends Resource
     {
         return static::getModel()::count();
     }
+    public static function getNavigationBadgeTooltip(): ?string
+    {
+        return 'Total Muallaf';
+    }
 
     public static function getNavigationBadgeColor(): ?string
     {

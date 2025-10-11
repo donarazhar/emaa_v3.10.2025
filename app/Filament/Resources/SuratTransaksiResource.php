@@ -24,6 +24,10 @@ class SuratTransaksiResource extends Resource
     {
         return static::getModel()::count();
     }
+    public static function getNavigationBadgeTooltip(): ?string
+    {
+        return 'Total Surat';
+    }
 
     public static function getNavigationBadgeColor(): ?string
     {
@@ -36,7 +40,7 @@ class SuratTransaksiResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('index')->label('No Disposisi')
                     ->disabled()
-                    ->default(fn () => \App\Models\SuratTransaksi::generateNoUrutSurat()),
+                    ->default(fn() => \App\Models\SuratTransaksi::generateNoUrutSurat()),
                 Forms\Components\TextInput::make('no_transaksi_surat')->label('No. Surat')
                     ->required()
                     ->maxLength(255),
@@ -83,16 +87,16 @@ class SuratTransaksiResource extends Resource
                         return str_pad($adjustedNumber, 4, '0', STR_PAD_LEFT) . '/' . $month . '/' . $year;
                     }),
                 Tables\Columns\TextColumn::make('tgl_transaksi_surat')->dateTime('d/m/Y')->label('Tgl & No. Surat')
-                    ->description(fn (SuratTransaksi $record): string => $record->no_transaksi_surat)
+                    ->description(fn(SuratTransaksi $record): string => $record->no_transaksi_surat)
                     ->sortable()->searchable(),
                 Tables\Columns\TextColumn::make('surat_dari_transaksi_surat')->label('Dari & Perihal')
-                    ->description(fn (SuratTransaksi $record): string => $record->perihal_transaksi_surat)
-                    ->description(fn (SuratTransaksi $record): string => $record->kategori->nama_kategori, position:'above')
+                    ->description(fn(SuratTransaksi $record): string => $record->perihal_transaksi_surat)
+                    ->description(fn(SuratTransaksi $record): string => $record->kategori->nama_kategori, position: 'above')
                     ->sortable()->searchable(),
                 Tables\Columns\TextColumn::make('status_transaksi_surat')->label('Status & Isi Disposisi')
-                ->description(fn (SuratTransaksi $record): string => $record->asal->nama_asal_surat, position:'above')
-                ->description(fn (SuratTransaksi $record): string => $record->disposisi_transaksi_surat)
-                ->sortable()->toggleable(isToggledHiddenByDefault: true),
+                    ->description(fn(SuratTransaksi $record): string => $record->asal->nama_asal_surat, position: 'above')
+                    ->description(fn(SuratTransaksi $record): string => $record->disposisi_transaksi_surat)
+                    ->sortable()->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 Tables\Filters\SelectFilter::make('nama_asal_surat')->label('Filter by Asal Surat')

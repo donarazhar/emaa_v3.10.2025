@@ -7,7 +7,7 @@
     "require": {
         "php": "^8.2",
         "barryvdh/laravel-dompdf": "^2.2",
-        "bezhansalleh/filament-shield": "^3.2",
+        "bezhansalleh/filament-shield": "^3.9",
         "filament/filament": "^3.2",
         "filament/widgets": "^3.2",
         "icetalker/filament-table-repeatable-entry": "^1.0",
